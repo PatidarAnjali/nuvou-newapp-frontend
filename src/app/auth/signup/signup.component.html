@@ -11,9 +11,11 @@
         <br>
 
         <form (ngSubmit)="onSignup()" #signupForm="ngForm" class="signup-form">
+            
             <input [(ngModel)]="formData.username" name="username" placeholder="Username" required />
             <input [(ngModel)]="formData.email" name="email" placeholder="Email" required />
             <input [(ngModel)]="formData.password" name="password" type="password" placeholder="Password" required />
+
             <button type="submit" class="signup-btn" [disabled]="isLoading || !signupForm.form.valid">
                 {{ isLoading ? 'Creating account...' : 'Sign Up' }}
             </button>

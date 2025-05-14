@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../../shared/auth.service'; // Make sure path is correct
+import { AuthService } from '../../shared/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -38,11 +38,9 @@ export class SignupComponent {
       next: (response) => {
         console.log('Signup successful:', response);
         this.isLoading = false;
-        // After successful signup, you might want to:
-        // 1. Either redirect to login page
+
         this.router.navigate(['/login']);
-        // 2. Or automatically log the user in
-        // this.login();
+
       },
       error: (err) => {
         console.error('Signup error:', err);
@@ -52,7 +50,6 @@ export class SignupComponent {
     });
   }
 
-  // Optional: Auto-login after signup
   private login() {
     const loginData = {
       email: this.formData.email,
@@ -71,7 +68,7 @@ export class SignupComponent {
       },
       error: (err) => {
         console.error('Auto-login failed:', err);
-        // Just redirect to login if auto-login fails
+        // just redirect to login if auto-login fails
         this.router.navigate(['/login']);
       }
     });
