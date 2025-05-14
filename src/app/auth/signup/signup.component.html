@@ -1,1 +1,22 @@
-<p>signup works!</p>
+<div class="signup-page">
+    <div class="signup-box">
+
+        <h2 class="signup-title">Create Your Space</h2>
+        <p class="signup-subtitle">Join the Nuvou community</p>
+
+        <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+        </div>
+
+        <br>
+
+        <form (ngSubmit)="onSignup()" #signupForm="ngForm" class="signup-form">
+            <input [(ngModel)]="formData.username" name="username" placeholder="Username" required />
+            <input [(ngModel)]="formData.email" name="email" placeholder="Email" required />
+            <input [(ngModel)]="formData.password" name="password" type="password" placeholder="Password" required />
+            <button type="submit" class="signup-btn" [disabled]="isLoading || !signupForm.form.valid">
+                {{ isLoading ? 'Creating account...' : 'Sign Up' }}
+            </button>
+        </form>
+    </div>
+</div>
